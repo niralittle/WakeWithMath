@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">WakeUpWithMath</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="button">SCHEDULE ALARM</string>
+    <string name="choose_time">Choose setTime</string>
+    <string name="pick_time">О котрій вас будити?</string>
+    <string name="schedule_message">Запланувати будильник</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_activity_wake_up">WakeUp</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="solved_button">Я прокинувся!</string>
+</resources>

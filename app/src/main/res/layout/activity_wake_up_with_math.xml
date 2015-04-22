@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:baselineAligned="false"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".WakeUpWithMath"
+    android:weightSum="1">
+    <Button
+        android:layout_width="351dp"
+        android:layout_height="wrap_content"
+        android:text="@string/pick_time"
+        android:id="@+id/setTime"
+        android:onClick="showTimePickerDialog"
+        android:layout_weight="0.08" />
+
+        <Button
+            android:layout_width="351dp"
+            android:layout_height="wrap_content"
+            android:text="@string/schedule_message"
+            android:id="@+id/schedule"
+            android:enabled="false"
+            android:onClick="scheduleAlarm"
+            android:layout_weight="0.08" />
+</LinearLayout>
