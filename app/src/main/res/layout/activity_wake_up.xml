@@ -16,6 +16,54 @@
     <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         android:id="@+id/my_frame">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/task"
+            android:textSize="40sp"
+            android:textColor="#ffffffff"
+            android:layout_column="0"
+            android:textAlignment="center"
+            android:layout_weight="0.5"
+            android:layout_gravity="bottom|center_horizontal"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_width="121dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/result"
+            android:layout_column="0"
+            android:textColor="#ffffffff"
+            android:textSize="40sp"
+            android:background="@drawable/abc_textfield_search_material"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/answer"
+            android:layout_column="0"
+            android:textColor="#ffff4143"
+            android:textSize="30sp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp" />
+        <Button
+            android:layout_width="256dp"
+            android:layout_height="155dp"
+            android:text="@string/check_button"
+            android:id="@+id/check"
+            android:background="@drawable/oval_button"
+            android:layout_gravity="center_vertical"
+            android:layout_column="0"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:textColor="#ffffffff"
+            android:textSize="30sp"
+            android:backgroundTint="#ff2022ab"
+            android:textStyle="bold" />
+
 
         <LinearLayout android:id="@+id/fullscreen_content_controls" style="?metaButtonBarStyle"
             android:layout_width="match_parent" android:layout_height="wrap_content"

@@ -11,6 +11,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import theano.wakeupwithmath.util.SystemUiHider;
 
@@ -93,13 +96,48 @@ public class WakeUp extends Activity {
         mBackgroundSound.execute();
         showTasks();
     }
+    private Button check;
+    private EditText result;
+    private TextView answer;
+    private TextView task;
+    private Task.Example[] exm;
+    private int N;
 
+    private boolean problemsSolved;
     private void showTasks() {
+        problemsSolved = false;
+        Task t = new Task();
+        exm = t.getExampels();
+        check = (Button) findViewById(R.id.check);
+        result = (EditText) findViewById(R.id.result);
+        task = (TextView) findViewById(R.id.task);
+        answer = (TextView) findViewById(R.id.answer);
+
+        N = 0;
+        while(N<exm.length){
+            task.setText(exm[N].getTask());
+            result.setText("");
+            check.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (String.valueOf(result.getText()).equals(String.valueOf(exm[N].getResult()))){
+                        N++;
+                    }
+                    else {
+                        answer.setText("Не вірно");
+                    }
+
+                }
+            });
+        }
+        problemsSolved = true;
+        checkInput();
+
 
     }
 
-    public void checkInput(View view) {
-        if (problemsSolved()) {
+    public void checkInput() {
+        if (problemsSolved) {
             mp.stop();
             mBackgroundSound.cancel(true);
             finish();
@@ -107,10 +145,7 @@ public class WakeUp extends Activity {
         }
     }
 
-    private boolean problemsSolved() {
-        //TODO fill with checks
-        return true;
-    }
+
 
 
     public class BackgroundSound extends AsyncTask<Void, Void, Void> {
