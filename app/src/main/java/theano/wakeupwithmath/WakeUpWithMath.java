@@ -14,8 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
@@ -25,8 +25,6 @@ public class WakeUpWithMath extends FragmentActivity {
     private static int minute = 0;
     Button setTime;
     Button schedule;
-
-    SimpleDateFormat formatter = new SimpleDateFormat("hh:mm:ss");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +46,6 @@ public class WakeUpWithMath extends FragmentActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -63,21 +60,24 @@ public class WakeUpWithMath extends FragmentActivity {
         intent.setAction(Intent.ACTION_VIEW);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         PendingIntent wakeUp = PendingIntent.getActivity(this, 123, intent, 0);
-        AlarmManager alarmManager = (AlarmManager) this.getSystemService(this.ALARM_SERVICE);
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calculateMillis(), wakeUp);
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(ALARM_SERVICE);
+        long time = calculateMillis();
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, time, wakeUp);
+        Toast.makeText(this, "Будильник наведено", Toast.LENGTH_SHORT).show();
+        schedule.setVisibility(View.INVISIBLE);
+        setTime.setEnabled(false);
     }
 
     private long calculateMillis() {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR, hour);
         cal.set(Calendar.MINUTE, minute);
-        cal.set(Calendar.SECOND, 00);
-        return cal.getTimeInMillis() - Calendar.getInstance().getTimeInMillis();
+        cal.set(Calendar.SECOND, 0);
+        return cal.getTimeInMillis();
     }
 
     public static class TimePickerFragment extends DialogFragment
             implements TimePickerDialog.OnTimeSetListener {
-
         Button setTimeButton;
         Button schedule;
         public void setButtons(Button setTime, Button schedule) {
