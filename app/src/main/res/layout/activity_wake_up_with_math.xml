@@ -6,8 +6,7 @@
     android:orientation="vertical"
     android:baselineAligned="false"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".WakeUpWithMath"
-    android:weightSum="1"
-    android:background="@drawable/abstractl">
+    android:weightSum="1" >
     <Button
         android:layout_width="351dp"
         android:layout_height="wrap_content"
@@ -17,7 +16,7 @@
         android:layout_weight="0.08"
         android:background="#ffdd8915"
         android:textColor="#fff"
-        android:textSize="26dp"
+        android:textSize="26sp"
         android:textStyle="bold" />
 
         <Button
@@ -25,11 +24,11 @@
             android:layout_height="60dp"
             android:text="@string/schedule_message"
             android:id="@+id/schedule"
-            android:enabled="true"
+            android:enabled="false"
             android:onClick="scheduleAlarm"
             android:textAlignment="center"
             android:layout_marginTop="40dp"
             android:background="#fbf6fff5"
             android:textStyle="normal"
-            android:textSize="19dp" />
+            android:textSize="19sp" />
 </LinearLayout>

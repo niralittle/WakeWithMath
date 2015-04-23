@@ -14,4 +14,5 @@
     <string name="dummy_content"></string>
     <string name="solved_button">Я прокинувся!</string>
     <string name="check_button">Перевірити</string>
+    <string name="are_you_awake">Ви вже прокинулись?</string>
 </resources>

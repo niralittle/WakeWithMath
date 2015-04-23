@@ -20,7 +20,7 @@ public class ProblemFactory {
     private static Problem generate() {
         Random r = new Random();
         b = r.nextInt(20);
-        a = r.nextInt(50)+b;
+        a = r.nextInt(50) + b;
         if ((a % b) == 0) op = r.nextInt(4);
         else op = r.nextInt(3);
         switch (op) {
@@ -40,6 +40,7 @@ public class ProblemFactory {
                 break;
             }
             case 3: {
+                if (b == 0) b = r.nextInt();
                 result = a / b;
                 content = String.valueOf(a)+" / "+String.valueOf(b)+" = ";
             }

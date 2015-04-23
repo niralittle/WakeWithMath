@@ -1,17 +1,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
-    android:layout_height="fill_parent" android:background="@drawable/abstractl"
-    tools:context="theano.wakeupwithmath.WakeUp">
+    android:layout_height="fill_parent"
+    tools:context="theano.wakeupwithmath.WakeUp"
+    android:id="@+id/mylayout"
+    android:background="#5679">
 
     <Button android:id="@+id/submit" style="?metaButtonBarButtonStyle"
         android:layout_width="fill_parent" android:layout_height="120dp"
-         android:text="@string/solved_button"
+        android:text="@string/solved_button"
         android:onClick="checkInput"
         android:layout_gravity="bottom"
         android:visibility="visible"
         android:background="#ffccc800"
         android:textStyle="bold|normal"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:layout_alignParentBottom="true"
         android:layout_alignEnd="@+id/res3"
         android:layout_marginBottom="59dp" />
@@ -26,7 +28,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="5dp"
         android:textStyle="bold"
-        android:textColor="#ffa016c9" />
+        android:textSize="25sp"
+        android:textColor="#ffff" />
 
     <TextView
         android:layout_width="200dp"
@@ -39,8 +42,8 @@
         android:layout_marginTop="43dp"
         android:layout_marginLeft="5dp"
         android:textStyle="bold"
-        android:textSize="25dp"
-        android:textColor="#ffa016c9" />
+        android:textSize="25sp"
+        android:textColor="#ffff" />
 
     <TextView
         android:layout_width="200dp"
@@ -52,8 +55,8 @@
         android:layout_marginTop="52dp"
         android:layout_marginLeft="5dp"
         android:textStyle="bold"
-        android:textSize="25dp"
-        android:textColor="#ffa016c9" />
+        android:textSize="25sp"
+        android:textColor="#ffff" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -65,7 +68,8 @@
         android:layout_toEndOf="@+id/task1"
         android:layout_marginStart="52dp"
         android:textStyle="bold"
-        android:textColor="#ffa016c9" />
+        android:textColor="#ffff"
+         />
 
     <EditText
         android:layout_width="wrap_content"
@@ -76,7 +80,8 @@
         android:layout_alignTop="@+id/task2"
         android:layout_alignStart="@+id/res1"
         android:textStyle="bold"
-        android:textColor="#ffa016c9" />
+        android:textColor="#ffff"
+        />
 
     <EditText
         android:layout_width="wrap_content"
@@ -87,13 +92,14 @@
         android:layout_alignTop="@+id/task3"
         android:layout_alignStart="@+id/res2"
         android:textStyle="bold"
-        android:textColor="#ffa016c9" />
+        android:textColor="#ffff"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Ви вже прокинулись?"
+        android:text="@string/are_you_awake"
         android:id="@+id/message"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -101,9 +107,8 @@
         android:textAlignment="center"
         android:layout_marginTop="15dp"
         android:layout_alignParentEnd="false"
-        android:textSize="32dp"
+        android:textSize="32sp"
         android:background="#6dfef7fa"
-        android:autoText="false"
         android:textColor="#fff8ff04" />
 
 </RelativeLayout>
