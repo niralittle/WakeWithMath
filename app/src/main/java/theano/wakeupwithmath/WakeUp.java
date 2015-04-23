@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import theano.wakeupwithmath.util.SystemUiHider;
 
@@ -25,65 +26,75 @@ public class WakeUp extends Activity {
     private static final boolean TOGGLE_ON_CLICK = true;
     private static final int HIDER_FLAGS = SystemUiHider.FLAG_HIDE_NAVIGATION;
 
+    TextView task1;
+    TextView task2;
+    TextView task3;
+
+    EditText res1;
+    EditText res2;
+    EditText res3;
+
+    private Button check;
+    private TextView result;
+    private ProblemFactory.Problem[] problems;
+    private int N;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wake_up);
 
+        task1 = (TextView) findViewById(R.id.task1);
+        task2 = (TextView) findViewById(R.id.task2);
+        task3 = (TextView) findViewById(R.id.task3);
+
+        res1 = (EditText) findViewById(R.id.res1);
+        res2 = (EditText) findViewById(R.id.res2);
+        res3 = (EditText) findViewById(R.id.res3);
+
         mBackgroundSound = new BackgroundSound();
         mBackgroundSound.execute();
+
         showTasks();
     }
-    private Button check;
-    private EditText result;
-    private TextView answer;
-    private TextView task;
-    private Task.Example[] exm;
-    private int N;
 
-    private boolean problemsSolved;
     private void showTasks() {
-        problemsSolved = false;
-        Task t = new Task();
-        exm = t.getExampels();
-        check = (Button) findViewById(R.id.check);
-        result = (EditText) findViewById(R.id.result);
-        task = (TextView) findViewById(R.id.task);
-        answer = (TextView) findViewById(R.id.answer);
-
-        N = 0;
-        while(N<exm.length){
-            task.setText(exm[N].getTask());
-            result.setText("");
-            check.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (String.valueOf(result.getText()).equals(String.valueOf(exm[N].getResult()))){
-                        N++;
-                    }
-                    else {
-                        answer.setText("Не вірно");
-                    }
-
-                }
-            });
-        }
-        problemsSolved = true;
-        checkInput();
-
-
+        problems = ProblemFactory.generateProblemSet();
+        task1 = (TextView) findViewById(R.id.task1);
+        task1.setText(problems[0].getContent());
+        task2 = (TextView) findViewById(R.id.task2);
+        task2.setText(problems[1].getContent());
+        task3 = (TextView) findViewById(R.id.task3);
+        task3.setText(problems[2].getContent());
     }
 
-    public void checkInput() {
-        if (problemsSolved) {
+    public void checkInput(View view) {
+        if (problemsSolved()) {
             mp.stop();
             mBackgroundSound.cancel(true);
             finish();
             System.exit(0);
+        } else {
+            Toast.makeText(getApplicationContext(),
+                    "Щось ви ще не прокинулись, спробуйте-но ще", Toast.LENGTH_SHORT).show();
         }
     }
 
+    private boolean problemsSolved() {
+        if (res1.getText().toString().isEmpty()
+                || res2.getText().toString().isEmpty()
+                || res3.getText().toString().isEmpty()) {
+            return false;
+        }
+        if (!(problems[0].getResult() == Integer.parseInt(res1.getText().toString()))
+                || !(problems[1].getResult() == Integer.parseInt(res2.getText().toString()))
+                || !(problems[2].getResult() == Integer.parseInt(res3.getText().toString()))) {
+            return false;
+        }
 
+        return true;
+    }
 
 
     public class BackgroundSound extends AsyncTask<Void, Void, Void> {

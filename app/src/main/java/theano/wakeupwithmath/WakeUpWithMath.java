@@ -98,7 +98,7 @@ public class WakeUpWithMath extends FragmentActivity {
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             WakeUpWithMath.minute = minute;
             WakeUpWithMath.hour = hourOfDay;
-            setTimeButton.setText("" + hour + ':' + minute);
+            setTimeButton.setText("" + hour + ':' + (String.valueOf(minute).length() > 1 ? minute : "0" + minute));
             schedule.setEnabled(true);
         }
     }
